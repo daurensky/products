@@ -1,5 +1,5 @@
 @extends('layout.stock')
 
 @section('content')
-    {{ __('literal.welcome') }}
+    <h1>{{ __('literal.welcome') }} {{ auth()->user()->name }}!</h1>
 @endsection

@@ -1,25 +1,34 @@
 @extends('layout.stock')
 
 @section('content')
-    <h2 class="mb-3">{{ __('menu.product_categories') }}</h2>
+    <div class="d-flex align-items-center justify-content-between">
+        <h1>{{ __('menu.product_categories') }}</h1>
+
+        <a href="{{ route('stock.product-category.create') }}" class="btn btn-primary">
+            {{ __('action.add') }}
+        </a>
+    </div>
+
+    <hr>
 
     <table class="table">
         <thead>
         <tr>
             <th>№</th>
-            <th>{{ __('stock.title') }}</th>
+            <th>{{ __('stock.product_category.title') }}</th>
             <th>{{ __('stock.product.count') }}</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        @foreach($categories as $key => $category)
+        @foreach($productCategories as $key => $productCategory)
             <tr>
-                <td>{{ $categories->firstItem() + $key }}</td>
-                <td>{{ $category->title }}</td>
-                <td>{{ $category->products->count() }}</td>
+                <td>{{ $productCategories->firstItem() + $key }}</td>
+                <td>{{ $productCategory->title }}</td>
+                <td>{{ $productCategory->products->count() }}</td>
                 <td>
-                    <a href="{{ route('product_category.show', [$category->id]) }}" class="btn btn-primary">
+                    <a href="{{ route('stock.product-category.show', [$productCategory->id]) }}"
+                       class="btn btn-outline-primary">
                         {{ __('action.open') }}
                     </a>
                 </td>
@@ -28,5 +37,5 @@
         </tbody>
     </table>
 
-    {{ $categories->links() }}
+    {{ $productCategories->links() }}
 @endsection

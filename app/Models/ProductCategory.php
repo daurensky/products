@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Traits\TranslatedNameTrait;
+use App\Traits\TranslatedTitleTrait;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -24,15 +27,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $title_ru
+ * @property string $title_kz
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereTitleKz($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereTitleRu($value)
  */
 class ProductCategory extends Model
 {
-    use HasFactory;
+    use HasFactory, TranslatedTitleTrait;
 
     protected $perPage = 30;
 
     protected $fillable = [
-        'title'
+        'title_ru',
+        'title_kz',
     ];
 
     public function products(): HasMany

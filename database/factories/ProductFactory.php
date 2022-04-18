@@ -17,8 +17,11 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->text;
+
         return [
-            'title'               => $this->faker->text,
+            'title_ru'            => $title,
+            'title_kz'            => $title,
             'details'             => $this->faker->text,
             'price'               => $this->faker->numberBetween(0, 90000),
             'product_category_id' => $this->faker->randomElement(ProductCategory::pluck('id')->toArray())

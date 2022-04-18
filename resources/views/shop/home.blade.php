@@ -1,10 +1,5 @@
-@extends('layout.base')
+@extends('layout.shop')
 
 @section('content')
-    <section>
-        <div class="container">
-            <h1>Добро пожаловать {{ auth()->user()->name }}!</h1>
-            <a href="/logout">Выйти</a>
-        </div>
-    </section>
+    <h1>{{ __('literal.welcome') }} {{ auth()->user()->name }}!</h1>
 @endsection

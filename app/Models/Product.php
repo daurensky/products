@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Traits\TranslatedTitleTrait;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -29,20 +32,32 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $title_ru
+ * @property string $title_kz
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereTitleKz($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereTitleRu($value)
  */
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, TranslatedTitleTrait;
 
     protected $fillable = [
-        'title',
+        'title_ru',
+        'title_kz',
         'details',
         'price',
         'product_category_id'
     ];
 
+    public function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => Carbon::parse($value)->format('d.m.Y H:i')
+        );
+    }
+
     public function category(): BelongsTo
     {
-        return $this->belongsTo(ProductCategory::class);
+        return $this->belongsTo(ProductCategory::class, 'product_category_id', 'id');
     }
 }

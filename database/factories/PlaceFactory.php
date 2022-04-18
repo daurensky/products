@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProductCategory>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Place>
  */
-class ProductCategoryFactory extends Factory
+class PlaceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,11 +16,11 @@ class ProductCategoryFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->text;
+        $city = $this->faker->city;
 
         return [
-            'title_ru' => $title,
-            'title_kz' => $title,
+            'name_ru' => $city,
+            'name_kz' => $city,
         ];
     }
 }

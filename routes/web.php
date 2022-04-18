@@ -2,8 +2,9 @@
 
 use App\Actions\RedirectToHomeAction;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Shop\ProductController as ShopProductController;
 use App\Http\Controllers\Stock\ProductCategoryController;
-use App\Http\Controllers\Stock\ProductController;
+use App\Http\Controllers\Stock\ProductController as StockProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,22 +35,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::group([
         'middleware' => 'user_type:shop',
         'prefix'     => 'shop',
+        'as'         => 'shop.',
     ], function () {
         Route::view('/', 'shop.home')->name('home');
+        Route::get('product', [ShopProductController::class, 'index'])->name('product.index');
     });
 
     Route::group([
         'middleware' => 'user_type:stock',
         'prefix'     => 'stock',
+        'as'         => 'stock.',
     ], function () {
         Route::view('/', 'stock.home')->name('home');
 
-        Route::get('product-category', [ProductCategoryController::class, 'index'])
-            ->name('product_category.index');
-        Route::get('product-category/{id}', [ProductCategoryController::class, 'show'])
-            ->name('product_category.show');
-
-        Route::get('product', [ProductController::class, 'index'])
-            ->name('product.index');
+        Route::resource('product-category', ProductCategoryController::class);
+        Route::resource('product', StockProductController::class);
     });
 });
