@@ -14,8 +14,7 @@ return new class extends Migration {
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->string('name_ru', 255);
-            $table->string('name_kz', 255);
+            $table->string('name', 255);
             $table->foreignId('place_id')
                 ->constrained()
                 ->cascadeOnUpdate()

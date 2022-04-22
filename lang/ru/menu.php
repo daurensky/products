@@ -6,5 +6,7 @@ return [
     'product_categories' => 'Категории товаров',
     'products'           => 'Товары',
     'order_products'     => 'Заказ товаров',
-    'stock'              => 'Склад'
+    'stock'              => 'Склад',
+    'shops'              => 'Магазины',
+    'users'              => 'Пользователи'
 ];

@@ -10,4 +10,7 @@ return [
     'details'          => 'Описание',
     'price'            => 'Цена',
     'nothing_selected' => 'Ничего не выбрано',
+    'name'             => 'Имя',
+    'street'           => 'Улица',
+    'house'            => 'Дом',
 ];

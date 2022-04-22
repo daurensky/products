@@ -17,11 +17,8 @@ class ShopFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->text;
-
         return [
-            'name_ru'  => $name,
-            'name_kz'  => $name,
+            'name'     => $this->faker->text,
             'place_id' => $this->faker->randomElement(Place::pluck('id')->toArray()),
             'street'   => $this->faker->streetName,
             'house'    => $this->faker->randomNumber(),

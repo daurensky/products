@@ -1,17 +1,17 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark position-fixed top-0 vh-100 col-sm-2"
      style="width: 300px;">
-    <a href="{{ route('stock.home') }}"
+    <a href="{{ route('operator.home') }}"
        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <span class="fs-4">{{ __('stock.name') }}</span>
+        <span class="fs-4">{{ __('operator.name') }}</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="{{ route('stock.home') }}"
+            <a href="{{ route('operator.home') }}"
                     @class([
                         'nav-link',
                         'text-white',
-                        'active' => request()->route()->getName() === 'stock.home'
+                        'active' => request()->route()->getName() === 'operator.home'
                     ])
             >
                 <i class="bi bi-house"></i>
@@ -19,27 +19,27 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('stock.product-category.index') }}"
+            <a href="{{ route('operator.shop.index') }}"
                     @class([
                         'nav-link',
                         'text-white',
-                        'active' => in_array(request()->route()->getName(), ['stock.product-category.index', 'stock.product-category.show'])
+                        'active' => in_array(request()->route()->getName(), ['operator.shop.index', 'operator.shop.show'])
                     ])
             >
-                <i class="bi bi-cart"></i>
-                {{ __('menu.product_categories') }}
+                <i class="bi bi-shop"></i>
+                {{ __('menu.shops') }}
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('stock.product.index') }}"
+            <a href="{{ route('operator.user.index') }}"
                     @class([
                         'nav-link',
                         'text-white',
-                        'active' => in_array(request()->route()->getName(), ['stock.product.index', 'stock.product.show'])
+                        'active' => in_array(request()->route()->getName(), ['operator.user.index', 'operator.user.show'])
                     ])
             >
-                <i class="bi bi-basket"></i>
-                {{ __('menu.products') }}
+                <i class="bi bi-people"></i>
+                {{ __('menu.users') }}
             </a>
         </li>
     </ul>
@@ -51,7 +51,7 @@
             <strong>{{ auth()->user()->name }}</strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="{{ route('stock.home') }}">{{ __('menu.settings') }}</a></li>
+            <li><a class="dropdown-item" href="{{ route('operator.home') }}">{{ __('menu.settings') }}</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>

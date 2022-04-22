@@ -2,6 +2,8 @@
 
 use App\Actions\RedirectToHomeAction;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Operator\ShopController;
+use App\Http\Controllers\Operator\UserController;
 use App\Http\Controllers\Shop\ProductController as ShopProductController;
 use App\Http\Controllers\Stock\ProductCategoryController;
 use App\Http\Controllers\Stock\ProductController as StockProductController;
@@ -28,8 +30,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::group([
         'middleware' => 'user_type:operator',
         'prefix'     => 'operator',
+        'as'         => 'operator.'
     ], function () {
         Route::view('/', 'operator.home')->name('home');
+        Route::resource('shop', ShopController::class);
+        Route::resource('user', UserController::class);
     });
 
     Route::group([

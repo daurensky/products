@@ -6,6 +6,7 @@ use App\Models\Place;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,10 +18,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(9)->create();
-        \App\Models\User::factory()->create([
-            'email' => 's@s.s',
+        User::factory(7)->create();
+        User::factory()->create([
+            'email' => 'stock@gmail.com',
             'type'  => 'STOCK'
+        ]);
+        User::factory()->create([
+            'email' => 'shop@gmail.com',
+            'type'  => 'SHOP'
+        ]);
+        User::factory()->create([
+            'email' => 'operator@gmail.com',
+            'type'  => 'OPERATOR'
         ]);
 
         ProductCategory::factory(500)->create();
